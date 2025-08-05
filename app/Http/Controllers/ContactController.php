@@ -36,7 +36,7 @@ class ContactController extends Controller
                 'subject' => $request->input('subject'),
                 'message' => $request->input('message'),
             ], function ($message) use ($request) {
-                $message->to(config('mail.from.address'))
+             $message->to(config('mail.from.address'))
                     ->subject('[Contact] ' . $request->input('subject'))
                     ->replyTo($request->input('email'), $request->input('name'));
             });
