@@ -55,10 +55,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // Send OTP to user's email
-        Mail::raw("Your verification code is: $otp", function ($message) use ($user) {
-            $message->to($user->email)
-                    ->subject('Email Verification Code');
-        });
+        Mail::to($user->email)->send(new \App\Mail\OtpVerificationMail($otp));
 
         // Redirect to OTP verification page
         return redirect()->route('verification.otp', ['user' => $user->id]);

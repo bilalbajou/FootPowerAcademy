@@ -29,4 +29,6 @@ use App\Http\Controllers\Auth\OtpVerificationController;
 Route::get('/verify-otp/{user}', [OtpVerificationController::class, 'show'])->name('verification.otp');
 Route::post('/verify-otp/{user}', [OtpVerificationController::class, 'verify'])->name('verification.otp.submit');
 
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'submit']);
+
 require __DIR__.'/auth.php';

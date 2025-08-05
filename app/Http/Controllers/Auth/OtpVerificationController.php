@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\RateLimiter;
+
 use Inertia\Inertia;
+
 
 class OtpVerificationController extends Controller
 {
@@ -22,6 +25,14 @@ class OtpVerificationController extends Controller
 
     public function verify(Request $request, $userId)
     {
+        // Rate limit: max 5 attempts per 10 minutes per user + IP
+        $key = 'otp-attempts:' . $userId . '|' . $request->ip();
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            $seconds = RateLimiter::availableIn($key);
+            return back()->withErrors(['otp' => 'Too many attempts. Please try again in ' . ceil($seconds / 60) . ' minutes.']);
+        }
+        RateLimiter::hit($key, 600); // 600 seconds = 10 minutes
+
         $request->validate([
             'otp' => 'required|digits:6',
         ]);
