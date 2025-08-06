@@ -1516,7 +1516,7 @@ onMounted(() => {
                                     <span
                                         v-if="contactForm.errors.name"
                                         class="text-red-500 text-sm mt-1 block"
-                                        >{{ contactForm.errors.name[0] }}</span
+                                        >{{ contactForm.errors.name }}</span
                                     >
                                 </div>
                                 <div>
@@ -1534,7 +1534,7 @@ onMounted(() => {
                                     <span
                                         v-if="contactForm.errors.phone"
                                         class="text-red-500 text-sm mt-1 block"
-                                        >{{ contactForm.errors.phone[0] }}</span
+                                        >{{ contactForm.errors.phone }}</span
                                     >
                                 </div>
                             </div>
@@ -1554,7 +1554,7 @@ onMounted(() => {
                                 <span
                                     v-if="contactForm.errors.email"
                                     class="text-red-500 text-sm mt-1 block"
-                                    >{{ contactForm.errors.email[0] }}</span
+                                    >{{ contactForm.errors.email }}</span
                                 >
                             </div>
                             <div>
@@ -1573,7 +1573,7 @@ onMounted(() => {
                                 <span
                                     v-if="contactForm.errors.subject"
                                     class="text-red-500 text-sm mt-1 block"
-                                    >{{ contactForm.errors.subject[0] }}</span
+                                    >{{ contactForm.errors.subject }}</span
                                 >
                             </div>
                             <div>
@@ -1592,7 +1592,7 @@ onMounted(() => {
                                 <span
                                     v-if="contactForm.errors.message"
                                     class="text-red-500 text-sm mt-1 block"
-                                    >{{ contactForm.errors.message[0] }}</span
+                                    >{{ contactForm.errors.message }}</span
                                 >
                             </div>
 
@@ -1600,7 +1600,7 @@ onMounted(() => {
                                 v-if="contactForm.errors.general"
                                 class="text-red-600 font-semibold"
                             >
-                                {{ contactForm.errors.general[0] }}
+                                {{ contactForm.errors.general }}
                             </div>
 
                             <button

@@ -15,6 +15,7 @@ class ContactController extends Controller
      */
     public function submit(Request $request)
     {
+        
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:100',
             'phone' => 'nullable|string|max:30',
