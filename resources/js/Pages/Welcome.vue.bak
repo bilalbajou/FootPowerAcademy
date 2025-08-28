@@ -100,63 +100,25 @@ onMounted(() => {
 
 <template>
     <Head>
-        <!-- Basic SEO Meta Tags -->
-        <title>FootPower Academy | Premier Soccer Training & Youth Development in Casablanca</title>
+        <title>FootPower Academy | Soccer Training & Youth Development</title>
         <meta
             name="description"
-            content="FootPower Academy is Casablanca's premier soccer training facility for youth development. Expert coaching, modern facilities, and personalized training programs for ages 6-18. Join 500+ successful players today!"
+            content="FootPower Academy empowers young soccer players with expert coaching, modern facilities, and a supportive community. Train. Grow. Succeed."
         />
-        <meta name="keywords" content="soccer training, youth soccer, football academy, Casablanca soccer, soccer coaching, youth development, soccer camps, goalkeeper training, elite soccer, Morocco soccer academy" />
-        <meta name="author" content="FootPower Academy" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-        <!-- Canonical URL -->
-        <link rel="canonical" href="https://footpoweracademy.com/" />
-
-        <!-- Open Graph / Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://footpoweracademy.com/" />
         <meta
             property="og:title"
-            content="FootPower Academy | Premier Soccer Training & Youth Development in Casablanca"
+            content="FootPower Academy | Soccer Training & Youth Development"
         />
         <meta
             property="og:description"
-            content="Empowering the next generation of soccer stars in Casablanca. Professional coaching, state-of-the-art facilities, and personalized development programs for ages 6-18."
+            content="Empowering the next generation of soccer stars. Join FootPower Academy for professional training, camps, and a passion for the game."
         />
         <meta
             property="og:image"
-            content="https://footpoweracademy.com/assets/images/footpoweracademy-removebg.png"
+            content="/assets/images/footpoweracademy-removebg.png"
         />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:site_name" content="FootPower Academy" />
-
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://footpoweracademy.com/" />
-        <meta
-            property="twitter:title"
-            content="FootPower Academy | Premier Soccer Training & Youth Development in Casablanca"
-        />
-        <meta
-            property="twitter:description"
-            content="Empowering the next generation of soccer stars in Casablanca. Professional coaching, state-of-the-art facilities, and personalized development programs for ages 6-18."
-        />
-        <meta
-            property="twitter:image"
-            content="https://footpoweracademy.com/assets/images/footpoweracademy-removebg.png"
-        />
-
-        <!-- Basic SEO Meta Tags -->
-        <meta name="theme-color" content="#1e3a8a" />
-        <meta name="language" content="English" />
-
-        <!-- Favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/footpoweracademy-icon.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/footpoweracademy-icon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/footpoweracademy-icon.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://footpoweracademy.local/" />
     </Head>
     <div
         class="min-h-screen bg-gradient-to-br from-blue-900 via-blue-700 to-blue-500 flex flex-col"

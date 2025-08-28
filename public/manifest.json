@@ -1,0 +1,27 @@
+{
+    "name": "FootPower Academy",
+    "short_name": "FootPower",
+    "description": "Premier soccer training and youth development academy in Casablanca, Morocco",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1e3a8a",
+    "theme_color": "#1e3a8a",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/assets/images/footpoweracademy-icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/images/footpoweracademy-icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["sports", "education", "fitness"],
+    "lang": "en",
+    "dir": "ltr"
+}

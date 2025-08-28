@@ -1,2 +1,21 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemap
+Sitemap: https://footpoweracademy.com/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /programs
+Allow: /coaches
+Allow: /contact
+Allow: /gallery
+
+# Crawl delay (optional)
+Crawl-delay: 1
