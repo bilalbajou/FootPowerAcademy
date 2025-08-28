@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Media;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -27,18 +30,63 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
+    /**
+     * Update the user's profile information.
+     */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
+        $validated = $request->validated();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Handle profile photo upload
+        if (isset($_FILES['profile_photo']) && is_uploaded_file($_FILES['profile_photo']['tmp_name'])) {
+            $uploadedFile = $_FILES['profile_photo'];
+            $file = new \Illuminate\Http\UploadedFile(
+                $uploadedFile['tmp_name'],
+                $uploadedFile['name'],
+                $uploadedFile['type'],
+                $uploadedFile['error'],
+                false // Move the file, don't test
+            );
+
+            // Delete old profile photo if exists
+            if ($user->profile_media_id && $user->profileMedia) {
+                Storage::disk($user->profileMedia->disk ?? 'public')
+                    ->delete($user->profileMedia->path);
+                $user->profileMedia->delete();
+            }
+
+            // Store the new file
+            $path = $file->store('profile-photos', 'public');
+
+            // Create media record
+            $media = Media::create([
+                'path' => $path,
+                'original_name' => $file->getClientOriginalName(),
+                'mime_type' => $file->getMimeType(),
+                'size' => $file->getSize(),
+                'disk' => 'public',
+                'user_id' => $user->id,
+            ]);
+
+            // Associate media with user
+            $user->profile_media_id = $media->id;
         }
 
-        $request->user()->save();
+        // Update user data
+        $user->fill($validated);
 
-        return Redirect::route('profile.edit');
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
+
+        return Redirect::route('profile.edit')
+            ->with('status', 'profile-updated')
+            ->with('success', 'Profile updated successfully.');
     }
+
 
     /**
      * Delete the user's account.

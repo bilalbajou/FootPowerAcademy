@@ -15,9 +15,11 @@ const form = useForm({
     password_confirmation: '',
 });
 
-const updatePassword = () => {
+const updatePassword = (e) => {
+    e.preventDefault();
     form.put(route('password.update'), {
         preserveScroll: true,
+        preserveState: true,
         onSuccess: () => form.reset(),
         onError: () => {
             if (form.errors.password) {
@@ -48,7 +50,7 @@ const updatePassword = () => {
             </p>
         </header>
 
-        <form @submit.prevent="updatePassword" class="space-y-6">
+        <form @submit.prevent="updatePassword" class="space-y-6" >
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                     <InputLabel for="current_password" value="Current Password" class="text-sm font-medium text-gray-700" />

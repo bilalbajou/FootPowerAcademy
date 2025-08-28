@@ -12,7 +12,7 @@ defineProps({
 });
 
 const form = useForm({
-    email: "",
+    identifier: "",
     password: "",
     remember: false,
 });
@@ -48,28 +48,29 @@ const submit = () => {
 
                 <!-- Login form -->
                 <form @submit.prevent="submit" class="space-y-6">
-                    <!-- Email -->
+                    <!-- Identifier (Email or Username) -->
                     <div>
                         <label
-                            for="email"
+                            for="identifier"
                             class="block text-blue-700 font-semibold mb-1"
-                            >Email</label
+                            >Email or Username</label
                         >
+                        <div class="text-xs text-blue-600 mb-1">You can login using your email address or username.</div>
                         <input
-                            id="email"
-                            type="email"
-                            v-model="form.email"
+                            id="identifier"
+                            type="text"
+                            v-model="form.identifier"
                             required
                             autofocus
                             autocomplete="username"
                             class="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-blue-50 text-blue-900 placeholder-blue-400"
-                            placeholder="you@email.com"
+                            placeholder="Enter your email or username"
                         />
                         <div
-                            v-if="form.errors.email"
+                            v-if="form.errors.identifier"
                             class="text-red-500 text-xs mt-1"
                         >
-                            {{ form.errors.email }}
+                            {{ form.errors.identifier }}
                         </div>
                     </div>
 
